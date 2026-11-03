@@ -1,0 +1,4 @@
+MongoDB: Document/BSON model; collections; MongoDB Query Language and aggregation; supports sharding/replica sets; suitable for flexible application data.
+Cassandra: Wide-column model; distributed partitions; CQL; horizontal scaling and high write availability; suitable for event/time-series data.
+Neo4j: Graph nodes and relationships; Cypher queries; suitable for recommendations, social networks and relationship analysis.
+Compare data model, storage structure, query method and scalability.

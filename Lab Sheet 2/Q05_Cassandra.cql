@@ -1,0 +1,12 @@
+CREATE KEYSPACE IF NOT EXISTS CollegeDB WITH replication={'class':'SimpleStrategy','replication_factor':1};
+USE CollegeDB;
+CREATE TABLE IF NOT EXISTS Students(Student_ID int PRIMARY KEY,Name text,Course text,Semester int,Marks float);
+INSERT INTO Students VALUES(1,'Aarav','BCA',5,85);
+INSERT INTO Students VALUES(2,'Riya','BCA',5,91);
+INSERT INTO Students VALUES(3,'Karan','BBA',3,78);
+INSERT INTO Students VALUES(4,'Neha','BCA',4,88);
+INSERT INTO Students VALUES(5,'Arjun','BTech',3,82);
+SELECT * FROM Students;
+SELECT * FROM Students WHERE Course='BCA' ALLOW FILTERING;
+UPDATE Students SET Marks=89 WHERE Student_ID=1;
+DELETE FROM Students WHERE Student_ID=5;

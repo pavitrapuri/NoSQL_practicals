@@ -1,0 +1,11 @@
+Run in redis-cli:
+SET 101 "Aarav"
+SET 102 "Riya"
+SET 103 "Karan"
+SET 104 "Neha"
+SET 105 "Arjun"
+GET 101
+SET 102 "Riya Sharma"
+GET 102
+DEL 103
+KEYS *

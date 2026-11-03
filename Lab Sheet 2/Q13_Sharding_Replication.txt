@@ -1,0 +1,10 @@
+MongoDB combined architecture:
+Application -> mongos -> multiple shards; each shard is a replica set with Primary and Secondary members.
+Configure config-server replica set, shard replica sets and mongos first. Then:
+sh.enableSharding('CombinedDB')
+use CombinedDB
+db.Students.createIndex({Student_ID:'hashed'})
+sh.shardCollection('CombinedDB.Students',{Student_ID:'hashed'})
+for(let i=1;i<=20;i++){db.Students.insertOne({Student_ID:i,Name:'Student'+i});}
+sh.status()
+Use rs.status() on each shard replica set to check replicas. Sharding gives horizontal scalability; replication gives redundancy/availability. Multi-process setup required.

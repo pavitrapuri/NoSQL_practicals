@@ -1,0 +1,8 @@
+Cassandra peer-to-peer replication. Configure multiple Cassandra nodes first.
+In cqlsh:
+CREATE KEYSPACE IF NOT EXISTS PeerDB WITH replication={'class':'NetworkTopologyStrategy','datacenter1':2};
+USE PeerDB;
+CREATE TABLE IF NOT EXISTS Students(student_id int PRIMARY KEY,name text,course text);
+INSERT INTO Students(student_id,name,course) VALUES(1,'Aarav','BCA');
+SELECT * FROM Students;
+Run nodetool status on cluster nodes. Replication factor 2 stores two copies in the named datacenter. Cassandra nodes are peers, unlike a permanent master-slave design.

@@ -1,0 +1,6 @@
+1. SINGLE SERVER: all data on one server. Advantage: simple. Limitation: limited scaling/single point of failure. Use: small college app.
+2. SHARDING: data partitions stored on different servers. Advantage: horizontal scaling. Limitation: shard-key/query complexity. Use: large online store.
+3. PRIMARY-SECONDARY REPLICATION: writes on primary, copies on secondaries. Advantage: redundancy/read scaling. Limitation: replication lag/failover. Use: read-heavy systems.
+4. PEER-TO-PEER: equal nodes replicate/coordinate. Advantage: no permanent master. Limitation: consistency/conflict complexity. Use: Cassandra clusters.
+5. SHARDING + REPLICATION: partitioned shards each have replicas. Advantage: scalability and fault tolerance. Limitation: operational complexity. Use: large-scale apps.
+Draw each architecture and explain data distribution, one advantage, one limitation and one application.

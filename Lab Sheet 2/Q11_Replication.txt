@@ -1,0 +1,13 @@
+MongoDB Primary-Secondary replica set. Requires separate mongod processes with same replSet name and different ports/dbpaths.
+Start two configured instances, then connect to primary:
+mongosh --port 27017
+rs.initiate({_id:'rs0',members:[{_id:0,host:'localhost:27017'},{_id:1,host:'localhost:27018'}]})
+rs.status()
+use ReplicationDB
+db.Students.insertOne({Student_ID:1,Name:'Aarav'})
+Connect to secondary:
+mongosh --port 27018
+rs.secondaryOk()
+use ReplicationDB
+db.Students.find()
+An eligible secondary may be elected primary if the primary becomes unavailable. Three voting members are recommended for production-like fault tolerance.

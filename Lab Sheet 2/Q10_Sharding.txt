@@ -1,0 +1,12 @@
+MongoDB sharding demonstration. Requires multiple shard replica sets, a config-server replica set and mongos router; not a single script.
+After configuring and starting these processes, connect to mongos and run:
+sh.addShard('shardA/localhost:27101')
+sh.addShard('shardB/localhost:27201')
+sh.addShard('shardC/localhost:27301')
+sh.enableSharding('ShardDB')
+use ShardDB
+db.Students.createIndex({Student_ID:'hashed'})
+sh.shardCollection('ShardDB.Students',{Student_ID:'hashed'})
+for(let i=1;i<=20;i++){db.Students.insertOne({Student_ID:i,Name:'Student'+i,Course:'BCA'});}
+sh.status()
+Ports and replica-set names are examples and must match your configuration. Benefit: data/workload distribution across servers.

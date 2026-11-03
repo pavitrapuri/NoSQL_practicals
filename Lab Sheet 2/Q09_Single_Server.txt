@@ -1,0 +1,12 @@
+MongoDB single-server practical:
+1. Install MongoDB Community Server and mongosh; start MongoDB service.
+2. Open terminal: mongosh
+3. Run:
+use SingleServerDB
+db.Students.insertMany([{Student_ID:1,Name:'Aarav',Course:'BCA',Marks:85},{Student_ID:2,Name:'Riya',Course:'BCA',Marks:91},{Student_ID:3,Name:'Karan',Course:'BBA',Marks:78}])
+db.Students.find()
+db.Students.updateOne({Student_ID:1},{$set:{Marks:90}})
+db.Students.find({Student_ID:1})
+db.Students.deleteOne({Student_ID:3})
+db.Students.find()
+Verify CRUD on the local server.
