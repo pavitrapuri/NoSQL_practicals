@@ -1,0 +1,12 @@
+# Q8. User session data with TTL - HBase Shell
+# TTL is configured in seconds for the column family.
+create 'UserSession', {NAME => 'session', TTL => 3600}, {NAME => 'user', TTL => 3600}
+put 'UserSession', 'S101', 'user:user_id', 'U1'
+put 'UserSession', 'S101', 'session:login_time', '2026-11-03T09:00:00'
+put 'UserSession', 'S101', 'session:status', 'active'
+put 'UserSession', 'S102', 'user:user_id', 'U2'
+put 'UserSession', 'S102', 'session:login_time', '2026-11-03T09:10:00'
+put 'UserSession', 'S102', 'session:status', 'active'
+get 'UserSession', 'S101'
+scan 'UserSession'
+# Values expire after the TTL period; physical cleanup may happen later.

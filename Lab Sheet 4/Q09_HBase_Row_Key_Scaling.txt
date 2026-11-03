@@ -1,0 +1,11 @@
+# Q9. Row-key design for large-scale HBase application
+create 'LargeApp', 'data'
+# Example row keys use a hash/bucket prefix to reduce hotspotting.
+put 'LargeApp', '01#USER1001', 'data:name', 'Aarav'
+put 'LargeApp', '02#USER1002', 'data:name', 'Riya'
+put 'LargeApp', '03#USER1003', 'data:name', 'Karan'
+put 'LargeApp', '01#USER1004', 'data:name', 'Neha'
+put 'LargeApp', '02#USER1005', 'data:name', 'Arjun'
+scan 'LargeApp'
+# In a real system, choose a stable, well-distributed prefix/salt.
+# Region splits and RegionServers distribute regions across the cluster.

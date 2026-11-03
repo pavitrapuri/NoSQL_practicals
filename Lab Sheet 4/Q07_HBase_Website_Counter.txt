@@ -1,0 +1,14 @@
+# Q7. Website page-view counters - HBase Shell
+create 'WebsiteCounter', 'views'
+put 'WebsiteCounter', 'home', 'views:count', '0'
+put 'WebsiteCounter', 'about', 'views:count', '0'
+put 'WebsiteCounter', 'products', 'views:count', '0'
+incr 'WebsiteCounter', 'home', 'views:count'
+incr 'WebsiteCounter', 'home', 'views:count'
+incr 'WebsiteCounter', 'about', 'views:count'
+incr 'WebsiteCounter', 'products', 'views:count'
+get_counter 'WebsiteCounter', 'home', 'views:count'
+get_counter 'WebsiteCounter', 'about', 'views:count'
+get_counter 'WebsiteCounter', 'products', 'views:count'
+# For reliable numeric increments, initialize/use HBase counter cells with
+# the HBase version's counter support; do not mix arbitrary text values.

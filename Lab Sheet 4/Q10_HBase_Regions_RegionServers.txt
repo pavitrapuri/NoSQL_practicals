@@ -1,0 +1,11 @@
+# Q10. HBase regions and RegionServers
+# HBase creates/splits regions as tables grow. Region assignment is managed
+# by HMaster and served by RegionServers.
+create 'RegionDemo', 'info'
+put 'RegionDemo', 'row001', 'info:name', 'Student1'
+put 'RegionDemo', 'row002', 'info:name', 'Student2'
+put 'RegionDemo', 'row003', 'info:name', 'Student3'
+put 'RegionDemo', 'row004', 'info:name', 'Student4'
+scan 'RegionDemo'
+# To inspect cluster/region status, use the HBase web UI or HBase admin tools.
+# A small local installation may show only one region and one RegionServer.

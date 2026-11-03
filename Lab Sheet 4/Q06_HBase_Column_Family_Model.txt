@@ -1,0 +1,14 @@
+# Q6. Column-family data model - HBase Shell
+create 'CollegeData', 'personal', 'academic', 'contact'
+put 'CollegeData', 'S1', 'personal:name', 'Aarav'
+put 'CollegeData', 'S1', 'personal:department', 'BCA'
+put 'CollegeData', 'S1', 'academic:semester', '5'
+put 'CollegeData', 'S1', 'academic:marks', '85'
+put 'CollegeData', 'S1', 'contact:email', 'aarav@example.com'
+put 'CollegeData', 'S2', 'personal:name', 'Riya'
+put 'CollegeData', 'S2', 'academic:semester', '5'
+put 'CollegeData', 'S2', 'contact:email', 'riya@example.com'
+get 'CollegeData', 'S1'
+scan 'CollegeData'
+# HBase stores related qualifiers under column families.
+# Rows can have different qualifiers; missing columns need not be stored.
